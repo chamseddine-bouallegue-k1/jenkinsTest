@@ -70,7 +70,11 @@ return (
             minHeight: 360,
           }}
         >
+<<<<<<< HEAD
           Hello Chamseddine.
+=======
+         Testing code
+>>>>>>> 965eace9c7c09e8dd120911d91eb664f513b4fc4
         </div>
       </Content>
       <Footer
