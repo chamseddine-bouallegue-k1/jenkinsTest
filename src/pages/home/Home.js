@@ -34,7 +34,6 @@ export default function Home(){
 const [collapsed, setCollapsed] = useState(false);
 
 return (
-
     <Layout
     style={{
       minHeight: '100vh',
@@ -71,7 +70,7 @@ return (
             minHeight: 360,
           }}
         >
-          Bill is a cat.
+          Hello Chamseddine.
         </div>
       </Content>
       <Footer
