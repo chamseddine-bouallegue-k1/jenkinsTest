@@ -71,7 +71,7 @@ return (
             minHeight: 360,
           }}
         >
-          Bill is a cat.
+          Bill is a mpuse.
         </div>
       </Content>
       <Footer
