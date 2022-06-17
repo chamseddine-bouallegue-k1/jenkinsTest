@@ -70,7 +70,7 @@ return (
             minHeight: 360,
           }}
         >
-          Testing 1
+          Testing 2
         </div>
       </Content>
       <Footer
