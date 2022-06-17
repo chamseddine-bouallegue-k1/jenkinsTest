@@ -70,10 +70,7 @@ return (
             minHeight: 360,
           }}
         >
-          Hello Chamseddine.
-          From Montreal
-          H3W 1N3
-          appartment 11
+          Testing 1
         </div>
       </Content>
       <Footer
