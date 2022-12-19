@@ -1,0 +1,19 @@
+.plan-wrapper{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    .plan{
+        width: 480px;
+    }
+}
+@media (max-width: 500px) { 
+    .plan-wrapper{
+        .plan{
+            width: 355px;
+        }
+    }
+ }
+ .title{
+    font-size: 20px;
+    font-weight: bold;
+}

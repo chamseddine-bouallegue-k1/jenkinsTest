@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
-import 'antd/dist/antd.css';
-import {
-    DesktopOutlined,
-    FileOutlined,
-    PieChartOutlined,
-    TeamOutlined,
-    UserOutlined,
-  } from '@ant-design/icons';
+import React, { useState } from "react";
+import { Row } from "antd";
+import "antd/dist/antd.min.css";
+import { PieChartOutlined, HomeOutlined } from "@ant-design/icons";
 
-import { Breadcrumb, Layout, Menu } from 'antd';
+import { Routes, Route, useNavigate } from "react-router-dom";
+import Create from "./Modals/Create/Create";
+import Smarthomes from "./Smarhomes/Smarthomes";
+
+import "./Home.scss";
+
+import { Layout, Menu } from "antd";
+import Dashboard from "./Dashboard/Dashboard";
+
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
@@ -18,70 +21,96 @@ function getItem(label, key, icon, children) {
     label,
   };
 }
-const items = [
-    getItem('Option 1', '1', <PieChartOutlined />),
-    getItem('Option 2', '2', <DesktopOutlined />),
-    getItem('User', 'sub1', <UserOutlined />, [
-      getItem('Tom', '3'),
-      getItem('Bill', '4'),
-      getItem('Alex', '5'),
-    ]),
-    getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
-    getItem('Files', '9', <FileOutlined />),
+
+export default function Home() {
+  const [collapsed, setCollapsed] = useState(false);
+  const navigate = useNavigate();
+
+  const items = [
+    getItem(
+      <div
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        Dashboard
+      </div>,
+      "1",
+      <PieChartOutlined />
+    ),
+    getItem(
+      <div
+        onClick={() => {
+          navigate("/smarthomes");
+        }}
+      >
+        Smarthomes
+      </div>,
+      "2",
+      <HomeOutlined />
+    ),
   ];
 
-export default function Home(){
-const [collapsed, setCollapsed] = useState(false);
-
-return (
+  return (
     <Layout
-    style={{
-      minHeight: '100vh',
-    }}
-  >
-    <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-      <div className="logo" />
-      <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
-    </Sider>
-    <Layout className="site-layout">
-      <Header
-        className="site-layout-background"
-        style={{
-          padding: 0,
-        }}
-      />
-      <Content
-        style={{
-          margin: '0 16px',
-        }}
+      style={{
+        minHeight: "100vh",
+      }}
+    >
+      <Sider
+        collapsible
+        collapsed={collapsed}
+        onCollapse={(value) => setCollapsed(value)}
       >
-        <Breadcrumb
-          style={{
-            margin: '16px 0',
-          }}
-        >
-          <Breadcrumb.Item>User</Breadcrumb.Item>
-          <Breadcrumb.Item>Bill</Breadcrumb.Item>
-        </Breadcrumb>
-        <div
+        <div className="logo" />
+        <Menu
+          theme="dark"
+          defaultSelectedKeys={["1"]}
+          mode="inline"
+          items={items}
+        />
+      </Sider>
+      <Layout className="site-layout">
+        <Header
           className="site-layout-background"
           style={{
-            padding: 24,
-            minHeight: 360,
+            padding: 0,
           }}
         >
-          Testing 4
-        </div>
-      </Content>
-      <Footer
-        style={{
-          textAlign: 'center',
-        }}
-      >
-        Chamseddine Bouallegue ©2022 
-      </Footer>
-    </Layout>
-  </Layout>
-)
+          <Row>
+            <Create />
+          </Row>
+        </Header>
+        <Content
+          style={{
+            margin: "0 16px",
+          }}
+        >
+          
+          <div
+            className="site-layout-background"
+            style={{
+              padding: 24,
+              minHeight: 360,
+            }}
+          >
+            <div style={{ width: "100%" }}>
+              <Routes>
+                <Route exact path="/" element={<Dashboard />} />
 
+                <Route exact path="/smarthomes" element={<Smarthomes />} />
+              </Routes>
+            </div>
+          </div>
+        </Content>
+        <Footer
+          style={{
+            textAlign: "center",
+          }}
+        >
+          Chamseddine Bouallegue ©2022
+        </Footer>
+      </Layout>
+    </Layout>
+  );
 }
